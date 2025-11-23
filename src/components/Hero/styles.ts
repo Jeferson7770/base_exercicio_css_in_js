@@ -5,40 +5,25 @@ export const Form = styled.section`
   width: 100%;
   background-image: url('https://cdn.pixabay.com/photo/2018/08/10/15/45/woman-3597101_1280.jpg');
   background-size: cover;
-  position: relative;
-
+  background-position: center;
   display: flex;
-  align-items: center; /* centro vertical */
-  justify-content: center; /* centro horizontal */
+  align-items: center;
+  position: relative;
 
   &::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: var(--cor-principal);
     content: '';
+    position: absolute;
+    inset: 0;
+    background-color: var(--cor-principal);
     opacity: 0.7;
   }
-
-  @media (max-width: 768px) {
-    height: auto;
-    padding: 24px 0;
-  }
 `
 
-export const HeroContent = styled.div`
+export const HeroTitle = styled.h2`
   position: relative;
   color: #eee;
-  text-align: center;
-`
-
-export const HeroTitle = styled.h1`
-  font-family: Gloock, serif;
+  font-family: Lato, sans-serif;
   font-size: 48px;
-
-  @media (max-width: 768px) {
-    font-size: 32px;
-  }
+  line-height: 1.2;
+  max-width: 900px;
 `
