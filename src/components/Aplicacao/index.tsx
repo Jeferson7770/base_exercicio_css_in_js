@@ -21,7 +21,7 @@ const Aplicacao = () => {
 
   const enviarFormulario = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
-    alert(`Candidatura enviada para a vaga ${state?.titulo}`)
+    alert(`Candidatura enviada para a vaga ${state?.titulo ?? id}`)
     navigate('/')
   }
 
@@ -34,14 +34,40 @@ const Aplicacao = () => {
       <Form onSubmit={enviarFormulario}>
         {/* Nome e Email */}
         <NomeEmail>
-          <input required type="text" placeholder="Nome completo" />
-          <input required type="email" placeholder="E-mail" />
+          <input
+            data-testid="input-nome"
+            name="nome"
+            required
+            type="text"
+            placeholder="Nome completo"
+          />
+
+          <input
+            data-testid="input-email"
+            name="email"
+            required
+            type="email"
+            placeholder="E-mail"
+          />
         </NomeEmail>
 
         {/* Telefone e Endereço */}
         <Contato>
-          <input required type="tel" placeholder="Telefone" />
-          <input required type="text" placeholder="Endereço completo" />
+          <input
+            data-testid="input-telefone"
+            name="telefone"
+            required
+            type="tel"
+            placeholder="Telefone"
+          />
+
+          <input
+            data-testid="input-endereco"
+            name="endereco"
+            required
+            type="text"
+            placeholder="Endereço completo"
+          />
         </Contato>
 
         {/* Setup + Escolaridade */}
@@ -49,17 +75,40 @@ const Aplicacao = () => {
           <div>
             <p>Setup favorito:</p>
 
-            <input defaultChecked type="radio" name="setup" id="windows" />
+            <input
+              data-testid="radio-windows"
+              name="setup"
+              defaultChecked
+              type="radio"
+              id="windows"
+              value="windows"
+            />
             <label htmlFor="windows">Windows</label>
 
-            <input type="radio" name="setup" id="linux" />
+            <input
+              data-testid="radio-linux"
+              name="setup"
+              type="radio"
+              id="linux"
+              value="linux"
+            />
             <label htmlFor="linux">Linux</label>
 
-            <input type="radio" name="setup" id="mac" />
+            <input
+              data-testid="radio-mac"
+              name="setup"
+              type="radio"
+              id="mac"
+              value="mac"
+            />
             <label htmlFor="mac">Mac</label>
           </div>
 
-          <select required>
+          <select
+            data-testid="select-escolaridade"
+            name="escolaridade"
+            required
+          >
             <option value="">Escolaridade</option>
             <option value="medio">Ensino médio completo</option>
             <option value="bacharelado">Bacharelado</option>
@@ -70,7 +119,9 @@ const Aplicacao = () => {
           </select>
         </Setup>
 
-        <Button type="submit">Enviar candidatura</Button>
+        <Button data-testid="botao-enviar" type="submit">
+          Enviar candidatura
+        </Button>
       </Form>
     </AplicacaoContainer>
   )
