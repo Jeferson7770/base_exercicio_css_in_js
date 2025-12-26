@@ -1,6 +1,8 @@
 import { VagaItem, VagaTitulo, VagaLink } from './styles'
+import { Link } from 'react-router-dom'
 
 type Props = {
+  id: number
   titulo: string
   localizacao: string
   nivel: string
@@ -10,21 +12,32 @@ type Props = {
   requisitos: string[]
 }
 
-const Vaga = (props: Props) => (
+const Vaga = ({
+  id,
+  titulo,
+  localizacao,
+  nivel,
+  modalidade,
+  salarioMin,
+  salarioMax,
+  requisitos
+}: Props) => (
   <VagaItem>
-    <VagaTitulo>{props.titulo}</VagaTitulo>
+    <VagaTitulo>{titulo}</VagaTitulo>
 
     <ul>
-      <li>Localização: {props.localizacao}</li>
-      <li>Senioridade: {props.nivel}</li>
-      <li>Tipo de contratação: {props.modalidade}</li>
+      <li>Localização: {localizacao}</li>
+      <li>Senioridade: {nivel}</li>
+      <li>Tipo de contratação: {modalidade}</li>
       <li>
-        Salário: {props.salarioMin} - {props.salarioMax}
+        Salário: {salarioMin} - {salarioMax}
       </li>
-      <li>Requisitos: {props.requisitos.join(', ')}</li>
+      <li>Requisitos: {requisitos.join(', ')}</li>
     </ul>
 
-    <VagaLink href="#">Ver detalhes e candidatar-se</VagaLink>
+    <VagaLink as={Link} to={`/candidatar/${id}`} state={{ titulo }}>
+      Ver detalhes e candidatar-se
+    </VagaLink>
   </VagaItem>
 )
 

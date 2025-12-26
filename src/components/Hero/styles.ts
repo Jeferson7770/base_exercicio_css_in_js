@@ -23,7 +23,7 @@ export const HeroTitle = styled.h2`
   position: relative;
   color: var(--cor-secundaria);
   font-family: Lato, sans-serif;
-  font-size: 48px;
+  font-size: 60px;
   line-height: 1.2;
   max-width: 900px;
 `
